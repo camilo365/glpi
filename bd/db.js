@@ -1,9 +1,11 @@
 /* process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; */
 import sql from 'mysql2/promise';
+import { datos } from '../controllers/controlador.js';
+
+
 
 export async function config(){
 
-    console.log(process.env.BD_DATABASE_B)
     try {
         const connection = await sql.createConnection({
             host: process.env.BD_DATABASE_B, 
@@ -13,7 +15,7 @@ export async function config(){
             database: process.env.BD_NAME_B
         })
         console.log('conexion establecida')
-        return connection
+        return connection;
     } catch (error) {
         console.error('error al conectar', error)
         console.log()
